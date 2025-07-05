@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[T2A, T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[english, russian]{babel}
+
+\setlength{\parindent}{0pt}
+\theoremstyle{plain} \newtheorem*{theorem*}{Теорема}
+\theoremstyle{plain} \newtheorem{theorem}{Теорема}[section]
+% \theoremstyle{remark} \newtheorem{definition}{Definition}[section]
+% \theoremstyle{remark} \newtheorem{notation}{Notation}[section]
+% \theoremstyle{definition} \newtheorem{corollary}{Corollary}[section]
+
+
+\begin{document}
+
+\begin{theorem*}
+    Suppose $x = \varphi (t)$ of ds (1) $\varphi (t) $ hi $ - \infty < t < +\infty$
+    \begin{enumerate}
+        \item $\varphi (t) = a$, ae $\varphi (t)$
+        \item $T > 0$, $\varphi (t + T) = \varphi (t)$ for all $t$, $0 < \vert t_1 - t_2 \vert < T$, $\varphi (t_1) \neq \varphi(t_2)$
+    \end{enumerate}
+    in case 2 \ $x = \varphi(t)$
+\end{theorem*}
+
+\begin{proof}
+
+    $x = \varphi(t)$ is def $a < t < b$. $\exists t_1,t_2 \in (a,b) \ \ (t_1 > t_2)$ such that $\varphi(t_1) = \varphi(t_2)$
+
+    \begin{equation}
+        \varphi(t) = \varphi(t + c)
+    \end{equation}
+
+    where $c = t_1 - t_2 > 0$
+    $x = \varphi(t+c)$ , $a-c < t < b-c$, $a < t < b-c$
+    \begin{equation}
+        x = \psi(t) =
+        \begin{cases}
+            \varphi(t), &a < t < b,\\
+            \varphi(t + c), & a-c < t \le a,
+        \end{cases}
+    \end{equation}
+    $x = \varphi(t)$, $(a-c, b)$, $x = \varphi(t)$,
+    $(-\infty, +\infty)$,
+    $\varphi(t) = \varphi(t - c)$,
+\end{proof}
+
+\end{document}
