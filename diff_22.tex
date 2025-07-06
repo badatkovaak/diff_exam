@@ -11,7 +11,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
-\theoremstyle{plain} \newtheorem*{theorem*}{Теорема}
+\theoremstyle{definition} \newtheorem*{theorem*}{Теорема}
 \theoremstyle{plain} \newtheorem{theorem}{Теорема}[section]
 % \theoremstyle{remark} \newtheorem{definition}{Definition}[section]
 % \theoremstyle{remark} \newtheorem{notation}{Notation}[section]
@@ -26,104 +26,164 @@
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=12pt
 
-1. Если $ x = \varphi(t)$ - решение динамической системы
+\subsection*{Динамические системы}
+
+Рассмотрим нормальную систему дифференциальных уравнений
 
 \begin{equation}
-    \dot{x} = f(x)
+    \dot{\bar{x}} = \bar{f}(\bar{x})
 \end{equation}
 
-то, для любого $c$, $x = \varphi(t + c)$
+правая часть которой не зависит от переменного $t$
+
+Системы дифференциальных уравнений вида (1) называются
+\textit{динамическими} или \textit{автономными}.
+
+Предположим, что функция $\bar{f}(\bar{x})$ непрерывна на
+некотором открытом множестве $D$ пространства переменных
+$x^1, \dots, x^n$ и удовлетворяет условию Липшица в любом
+замкнутом ограниченном подмножестве $D$. Тогда
+в силу теорем существования и единственности, для любого
+действительного числа $t_0$ и для любой точки $\bar{x}_0 \in D$
+будет существовать единственное решение
+
+\begin{equation*}
+    \bar{x} = \bar{\varphi}(t)
+\end{equation*}
+
+Системы уравнений (1), удовлетворяющее условию
+
+\begin{equation*}
+    \bar{\varphi}(t_0) = \bar{x}_0
+\end{equation*}
+
+В пространстве переменных $x^1, \dots, x^n$ любое
+решение $\bar{x} = \bar{\varphi}(t)$ динамической системы (1)
+определяет кривую. Эту кривую с заданным на ней параметром
+$t$ будем называть \textit{траекторией}.
+Само пространство $x^1, \dots, x^n$ называется
+\textit{фазовым пространством}.
+
+\subsection*{Свойства решений динамических систем}
+
+1. Если $ \bar{x} = \bar{\varphi}(t)$ -
+решение динамической системы
+
+\begin{equation}
+    \dot{\bar{x}} = \bar{f}(\bar{x})
+\end{equation}
+
+то, для любого $c$, $\bar{x} = \bar{\varphi}(t + c)$
 также является решением.
 \begin{proof}
 Следует из равенств
 
 \begin{equation*}
-    \frac{d}{dt} \varphi(t + c) = \varphi(t + c) =
-    f(\varphi(t + c))
+    \frac{d}{dt} \bar{\varphi}(t + c)
+    = \bar{\varphi}(t + c)
+    = \bar{f}(\bar{\varphi}(t + c))
 \end{equation*}
 
 \end{proof}
 
-2. Если $x = \varphi(t)$ и $x = \psi(t)$ -
-два решения системы (1) и $\varphi(t_1) = \psi(t_2)$,
-то $\psi(t) = \varphi(t + c)$, где $c = t_1 - t_2$.
-Иначе говоря, если траектории $x = \varphi(t)$ и
-$x = \psi(t)$ имеют общую точку,
+2. Если $\bar{x} = \bar{\varphi}(t)$ и $\bar{x} =
+\bar{\psi}(t)$ - два решения системы (1) и
+$\bar{\varphi}(t_1) = \bar{\psi}(t_2)$,
+то $\bar{\psi}(t) = \bar{\varphi}(t + c)$,
+где $c = t_1 - t_2$.
+Иначе говоря, если траектории $\bar{x} = \bar{\varphi}(t)$ и
+$\bar{x} = \bar{\psi}(t)$ имеют общую точку,
 то эти траектории совпадают.
 
 \begin{proof}
-В силу свойства 1, $x = \varphi(t + c)$
+В силу свойства 1, $\bar{x} = \bar{\varphi}(t + c)$ \
 ($c = t_1 - t_2$) - решение системы (1),
-а в силу равенства $\varphi(t_1) = \psi(t_2)$,
+а в силу равенства $\bar{\varphi}(t_1) = \bar{\psi}(t_2)$,
 
 \begin{equation*}
-    \varphi(t_2 + c) = \varphi(t_1) = \psi(t_2)
+    \bar{\varphi}(t_2 + c)
+    = \bar{\varphi}(t_1)
+    = \bar{\psi}(t_2)
 \end{equation*}
 
-Таким образом, решения $x = \varphi(t + c)$ и $x = \psi(t)$
+Таким образом, решения $\bar{x} = \bar{\varphi}(t + c)$
+и $\bar{x} = \bar{\psi}(t)$
 удовлетворяют одинаковым начальным
 условиям при $t = t_2$ и, в силу теоремы единственности,
 совпадают, т.е.
 
 \begin{equation*}
-    \varphi(t + c) = \psi(t)
+    \bar{\varphi}(t + c) = \bar{\psi}(t)
 \end{equation*}
 
 \end{proof}
 
 3. Решения динамической системы обладают групповым свойством:
-если $x = \varphi(t, x_0)$ - решение системы (1),
-удовлетворяющее начальному условию $\varphi(0, x_0) = x_0$, то
+если $\bar{x} = \bar{\varphi}(t, \bar{x}_0)$ - решение
+системы (1), удовлетворяющее начальному условию
+$\bar{\varphi}(0, x_0) =\bar{x}_0$, то
 
 \begin{equation*}
-    \varphi(t, \varphi(s, x_0)) = \varphi(t + s, x_0)
+    \bar{\varphi}(t, \bar{\varphi}(s, \bar{x}_0))
+    = \bar{\varphi}(t + s, \bar{x}_0)
 \end{equation*}
 
 \begin{proof}
-Положим $x_1 = \varphi(s, x_0)$.
-Тогда $\varphi_1(t) = \varphi(t, x_1)$ - решение системы (1) и,
-в силу свойства 1, $\varphi_2 = \varphi(t + s, x_0)$
+Положим $\bar{x}_1 = \bar{\varphi}(s, \bar{x}_0)$.
+Тогда $\bar{\varphi}_1(t) = \bar{\varphi}(t, \bar{x}_1)$
+- решение системы (1) и, в силу свойства 1,
+$\bar{\varphi}_2 = \bar{\varphi}(t + s, \bar{x}_0)$
 также является решением (1); при этом
 
 \begin{align*}
-    &\varphi_1(0) = \varphi(0, x_1) = x_1,\\
-    &\varphi_2(0) = \varphi(s, x_0) = x_1.
+    &\bar{\varphi}_1(0)
+    = \bar{\varphi}(0, \bar{x}_1)
+    = \bar{x}_1,\\
+    &\bar{\varphi}_2(0)
+    = \bar{\varphi}(s, \bar{x}_0)
+    = \bar{x}_1.
 \end{align*}
 
-Таким образом, решения $\varphi_1(t)$ и $\varphi_2(t)$
-системы уравнений (1) удовлетворяют
+Таким образом, решения $\bar{\varphi}_1(t)$ и
+$\bar{\varphi}_2(t)$ системы уравнений (1) удовлетворяют
 одинаковым начальным условиям. В силу теоремы единственности
-$\varphi(t) = \varphi_2(t)$ или
+$\bar{\varphi}(t) = \bar{\varphi}_2(t)$ или
 
 \begin{equation*}
-    \varphi(t, \varphi(s, x_0)) = \varphi(t + s, x_0)
+    \bar{\varphi}(t, \bar{\varphi}(s, \bar{x}_0))
+    = \bar{\varphi}(t + s, \bar{x}_0)
 \end{equation*}
 
 \end{proof}
 
-Решение системы (1) вида $x = a$, где $a$
+Решение системы (1) вида $\bar{x} = a$, где $a$
 - постоянный вектор, называется
-положением равновесия или точкой покоя.
+\textit{положением равновесия} или \textit{точкой покоя}.
 
-Очевидно, что если $x = a$ - положение равновесия,
+Очевидно, что если $\bar{x} = a$ - положение равновесия,
 то $f(a) = 0$, и наоборот,
-если $f(a) = 0$, то $x = a$ - положение равновесия.
+если $f(a) = 0$, то $\bar{x} = a$ - положение равновесия.
 
-Пусть $x = \varphi(t)$ - решение динамической системы (1),
-определенное при $- \infty < t < + \infty$.
-Число $c$ называется периодом решения $x = \varphi(t)$,
-если $\varphi(t + c) = \varphi(t)$ при всех $t$.
+\subsection*{Множество периодов решения Д.С.}
 
-Обозначим $F$ множество всех периодов решения $x = \varphi(t)$
-(это множество непусто, так как $0 \in F$).
-Докажем следующие свойства множества $F$.
+Пусть $\bar{x} = \bar{\varphi}(t)$ - решение динамической
+системы (1), определенное при $- \infty < t < + \infty$.
+Число $c$ называется \textit{периодом решения}
+$\bar{x} = \bar{\varphi}(t)$, если $\bar{\varphi}(t + c) =
+\bar{\varphi}(t)$ при всех $t$.
+
+Обозначим $F$ множество всех периодов решения
+$\bar{x} = \bar{\varphi}(t)$ (это множество непусто,
+так как $0 \in F$). Докажем следующие свойства множества $F$.
 \\
 
 1. Если $c \in F$, то $-c \in F$.
 \begin{proof}
-Так как $c$ - период, то $\varphi(t + c) = \varphi(t)$.
+Так как $c$ - период, то
+$\bar{\varphi}(t + c) = \bar{\varphi}(t)$.
 Заменяя в этом равенстве $t$ на $t - c$, получим
-$\varphi(t) = \varphi(t - c)$, т.е. $-c$ является периодом.
+$\bar{\varphi}(t) = \bar{\varphi}(t - c)$,
+т.е. $-c$ является периодом.
 \end{proof}
 
 2. Если $c_1 \in F$, $c_2 \in F$, то $c_1 + c_2 \in F$.
@@ -132,102 +192,111 @@ $\varphi(t) = \varphi(t - c)$, т.е. $-c$ является периодом.
 Следует из равенств
 
 \begin{equation*}
-    \varphi(t + c_1 + c_2) = \varphi(t + c_1) = \varphi(t)
+    \bar{\varphi}(t + c_1 + c_2)
+    = \bar{\varphi}(t + c_1)
+    = \bar{\varphi}(t)
 \end{equation*}
 
 \end{proof}
 
 3. $F$ - замкнутое множество.
-Д. Пусть $c_n$ - сходящаяся последовательность периодов
+\begin{proof}
+Пусть $c_n$ - сходящаяся последовательность периодов
 и $\lim_{n \rightarrow \infty} c_n = c_0$. Тогда в силу
 непрерывности $ $ имеем
 
 \begin{equation*}
-    \varphi(t + c_0) =
-    \varphi(t + \lim_{n \rightarrow \infty} c_n) =
-    \lim_{n \rightarrow \infty} \varphi(t + c_n) =
-    \varphi(t)
+    \bar{\varphi}(t + c_0)
+    = \bar{\varphi}(t + \lim_{n \rightarrow \infty} c_n)
+    = \lim_{n \rightarrow \infty} \bar{\varphi}(t + c_n)
+    = \bar{\varphi}(t)
 \end{equation*}
 
 Таким образом $c_0 \in F$, и, следовательно,
 $F$ - замкнутое множество.
+\end{proof}
 
+\subsection*{Виды траекторий}
 
 \begin{theorem*}
-    Пусть траектория $x = \varphi (t)$ динамической системы
+    Пусть траектория $\bar{x} = \bar{\varphi} (t)$ динамической системы
     (1) сама себя пересекает.
-    Тогда решение $\varphi (t)$ может быть продолжено на интервал
+    Тогда решение $\bar{\varphi} (t)$ может быть продолжено на интервал
     $- \infty < t < +\infty$ и имеет место одна
     из следующих возможностей:
     \begin{enumerate}
-        \item $\varphi (t) = a$, т.е. решение $\varphi (t)$
+        \item $\bar{\varphi} (t) = a$, т.е. решение $\bar{\varphi} (t)$
             является положением равновесия;
         \item существует такое число $T > 0$, что
-            $\varphi (t + T) = \varphi (t)$
+            $\bar{\varphi} (t + T) = \bar{\varphi} (t)$
             при всех $t$, но при $0 < \vert t_1 - t_2 \vert < T$,
-            $\varphi (t_1) \neq \varphi(t_2)$
+            $\bar{\varphi} (t_1) \neq \bar{\varphi}(t_2)$
     \end{enumerate}
-    в случае 2 решение \ $x = \varphi(t)$ называется
-    периодическим, а его траектория
-    - замкнутой траекторией или циклом.
+    в случае 2 решение \ $\bar{x} = \bar{\varphi}(t)$ называется
+    \textit{периодическим}, а его траектория
+    - \textit{замкнутой траекторией} или \textit{циклом}.
 \end{theorem*}
 
 \begin{proof}
-
-    Пусть решение $x = \varphi(t)$ опреелено при $a < t < b$.
+    Пусть решение $\bar{x} = \bar{\varphi}(t)$ опреелено при $a < t < b$.
     По предположению траектория решение сама себя пересекает,
     т.е. сущствуют такие
     $t_1,t_2 \in (a,b) ,\ \ (t_1 > t_2)$ что
-    $\varphi(t_1) = \varphi(t_2)$
+    $\bar{\varphi}(t_1) = \bar{\varphi}(t_2)$
 
     В силу свойства 2 решений динамических систем,
 
     \begin{equation}
-        \varphi(t) = \varphi(t + c)
+        \bar{\varphi}(t) = \bar{\varphi}(t + c)
     \end{equation}
 
     где $c = t_1 - t_2 > 0$.
-    Функция $x = \varphi(t+c)$ является решением системы (1),
+    Функция $\bar{x} = \bar{\varphi}(t+c)$ является решением системы (1),
     определенным при $a-c < t < b-c$, и, кроме того в силу (2),
     эти решения совпадают на общей части их областей определения,
     т.е. при $a < t < b-c$. Следовательно, решение
 
     \begin{equation}
-        x = \psi(t) =
+        \bar{x} = \bar{\psi}(t) =
         \begin{cases}
-            \varphi(t), &a < t < b,\\
-            \varphi(t + c), & a-c < t \le a,
+            \bar{\varphi}(t), &a < t < b,\\
+            \bar{\varphi}(t + c), & a-c < t \le a,
         \end{cases}
     \end{equation}
 
-    является продолжением решения $x = \varphi(t)$
+    является продолжением решения $\bar{x} = \bar{\varphi}(t)$
     на интервал $(a-c, b)$.
     Последовательно повторяя описанную процедуру,
     получим продолжение
-    решения $x = \varphi(t)$, определенное на интервале
-    $(- \infty, b)$.
+    решения $\bar{x} = \bar{\varphi}(t)$, определенное
+    на интервале $(- \infty, b)$.
 \newline
-    С помощью равенства $\varphi(t) = \varphi(t - c)$, которое
+    С помощью равенства $\bar{\varphi}(t)
+    = \bar{\varphi}(t - c)$, которое
     получается из (2) заменой $t$ на $t - c$, получим продолжение
-    решения $x = \varphi(t)$ с интервала $(- \infty, b)$ на всю
-    числовую ось $(-\infty, +\infty)$.
+    решения $\bar{x} = \bar{\varphi}(t)$ с интервала
+    $(- \infty, b)$ на всю числовую ось $(-\infty, +\infty)$.
 
-    Итак решение $x = \varphi(t)$  можно считать
+    Итак решение $\bar{x} = \bar{\varphi}(t)$  можно считать
     определенным при $- \infty < t < + \infty$ , причем,
     как ясно из самого способа продолжения, постоянная
     $c = t_1 - t_2 > 0$ является периодом этого решения.
 
-    Пусть $F$ - множество периодов решения $x = \varphi(t)$.
+    Пусть $F$ - множество периодов решения
+    $\bar{x} = \bar{\varphi}(t)$.
     Могут представится две возможности:
 
     \begin{itemize}
-        \item[а)] $F$ содержит сколь угодно малые положительные числа,
-        \item[б)] в $F$ найдется наименьшее положительное число $T$.
+        \item[а)] $F$ содержит сколь угодно малые
+            положительные числа,
+        \item[б)] в $F$ найдется наименьшее положительное
+            число $T$.
     \end{itemize}
 
     В случае а) существует сходящаяся к нулю
     последовательность положительных периодов $c_n$.
-    Пусть $t$ - произвольное действительное число. Дробные части
+    Пусть $t$ - произвольное действительное число.
+    Дробные части
 
     \begin{equation*}
         \alpha_n = \frac{t}{c_n} - \left[ \frac{t}{c_n} \right]
@@ -238,56 +307,57 @@ $F$ - замкнутое множество.
 
     \begin{equation*}
         \lim_{n \rightarrow \infty}
-        \left\{ t - \left[ \frac{t}{c_n}\right]\right\} =
-        \lim_{n \rightarrow \infty} (\alpha_n c_n) = 0
+        \left\{ t - \left[ \frac{t}{c_n}\right]\right\}
+        = \lim_{n \rightarrow \infty} (\alpha_n c_n) = 0
     \end{equation*}
 
     Числа $\left[ \frac{t}{c_n} \right] c_n$,
     будучи целыми кратными периодов $c_n$,
-    сами являются периодами решения $\varphi(t)$. Поэтому
+    сами являются периодами решения $\bar{\varphi}(t)$. Поэтому
 
     \begin{equation*}
-        \varphi(t) =
-        \varphi \left( t - \left[\frac{t}{c_n} c_n \right]\right)
+        \bar{\varphi}(t)
+        = \bar{\varphi}
+        \left( t - \left[\frac{t}{c_n} c_n \right]\right)
     \end{equation*}
 
     переходя в равенстве (3) к пределу при
     $n \rightarrow \infty$, получим
 
     \begin{equation*}
-        \varphi(t) =
-        \lim_{n \rightarrow \infty} \varphi
-        \left( t - \left[\frac{t}{c_n}\right] c_n \right) =
-        \varphi \left( \lim_{n \rightarrow \infty}
+        \bar{\varphi}(t)
+        = \lim_{n \rightarrow \infty} \bar{\varphi}
+        \left( t - \left[\frac{t}{c_n}\right] c_n \right)
+        = \bar{\varphi} \left( \lim_{n \rightarrow \infty}
         \left( t - \left[ \frac{t}{c_n} \right] c_n
-        \right)\right) =
-        \varphi(0)
+        \right)\right)
+        = \bar{\varphi}(0)
     \end{equation*}
 
-    Таким образом, решение $x = \varphi(t)$ в случае а)
-    является положением равновесия.
+    Таким образом, решение $\bar{x} = \bar{\varphi}(t)$
+    в случае а) является положением равновесия.
 \\
 
     В случае б)
 
     \begin{equation*}
-        \varphi(t + T) = \varphi(t)
+        \bar{\varphi}(t + T) = \bar{\varphi}(t)
     \end{equation*}
 
-    Покажем, что $\varphi(t_1) \ne \varphi(t_2)$
+    Покажем, что $\bar{\varphi}(t_1) \ne \bar{\varphi}(t_2)$
     при $0 < \vert t_1 - t_2 \vert < T$.
     Предположим противное. Тогда найдутся
     такие $t_1$, $t_2$ ($0 < \vert t_1 - t_2 \vert < T$),
-    что $\varphi(t_1) = \varphi(t_2)$. В силу свойства 2,
-    $ \varphi(t) = \varphi(t + c)$,
+    что $\bar{\varphi}(t_1) = \bar{\varphi}(t_2)$. В силу свойства 2,
+    $ \bar{\varphi}(t) = \bar{\varphi}(t + c)$,
     где $c = t_1 - t_2 \ne 0$.
     Таким образом, $c = t_1 - t_2$ служит периодом
-    решения $\varphi(t)$. В силу свойства 1
+    решения $\bar{\varphi}(t)$. В силу свойства 1
     множества $F$, положительное число
     $\vert t_1 - t_2 \vert = \pm c$ также является
     периодом, а это противоречит
     предположению, что $T$ - наименьший положительный
-    период решения $\varphi(t)$.
+    период решения $\bar{\varphi}(t)$.
 \end{proof}
 
     Из доказанной теоремы непосредственно получаем следующее

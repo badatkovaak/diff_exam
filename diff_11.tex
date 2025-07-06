@@ -15,9 +15,10 @@
 \theoremstyle{plain} \newtheorem{theorem}{Теорема}[section]
 % \theoremstyle{remark} \newtheorem{definition}{Definition}[section]
 % \theoremstyle{remark} \newtheorem{notation}{Notation}[section]
-\theoremstyle{definition} \newtheorem*{corollary*}{Следствие}
-\theoremstyle{definition} \newtheorem{corollary}{Следствие}[section]
+\theoremstyle{defintition} \newtheorem*{corollary*}{Следствие}
+% \theoremstyle{definition} \newtheorem{corollary}{Следствие}[section]
 \theoremstyle{remark} \newtheorem*{example*}{Пример}
+\theoremstyle{remark} \newtheorem*{remark*}{Замечание}
 
 
 \begin{document}
@@ -27,13 +28,18 @@
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=12pt
 
+\subsection*{Краевая задача}
+
+Рассмотрим дифференциальное уравнение второго порядка
 
 \begin{equation}
     \ddot{x} + a(t)\dot{x} + b(t)x = f(t)
 \end{equation}
 
-$a(t)$, $b(t)$, $f(t)$, $t_0 \le t \le t_1$
-$x(t)$
+Пусть функции $a(t)$, $b(t)$ и $f(t)$ определены
+и непрерывны на некотором отрезке $t_0 \le t \le t_1$.
+Будем искать решение $x(t)$ уравнения (1),
+удовлетворяющее следующим условиям:
 
 \begin{gather}
     \begin{split}
@@ -42,19 +48,35 @@ $x(t)$
     \end{split}
 \end{gather}
 
-$\alpha_0, \alpha_1, \beta_0, \beta_1$,
-$x(t)$, $\dot{x}(t)$, $t = t_0$, $t = t_1$,
+где $\alpha_0, \alpha_1, \beta_0, \beta_1$ - постоянные.
+
+Условия (2) называются краевыми или граничными условиями,
+а сама задача (1), (2) - краевой задачей.
+
+Условия (2) не позволяют найти одновременно значение
+$x(t)$ и $\dot{x}(t)$ ни при $t = t_0$, ни при $t = t_1$.
+Поэтому краевая задача (1), (2) не сводится к задаче Коши.
+
+Для краевой задачи (1), (2) может осуществляться
+любая из трех возможностей:
+она может иметь единственное решение, бесконечное
+множество решений и вообще не иметь решений.
 
 \begin{example*}
-    This is example
+    Для дифференциального уравнения
 
     \begin{equation}
         \ddot{x} + x = 0
     \end{equation}
 
+    общее решение которого имеет вид
+
     \begin{equation}
         x = c_1 \cos(t) + c_2 \sin(t)
     \end{equation}
+
+    рассмотрим следующие три краевые задачи
+    с граничными условиями:
 
     \begin{align}
         &\dot{x}(0) = 0, &\dot{x}(1) = 1; \\
@@ -62,28 +84,43 @@ $x(t)$, $\dot{x}(t)$, $t = t_0$, $t = t_1$,
         &\dot{x}(0) = 0, &\dot{x}(\pi) = 0;
     \end{align}
 
+    Краевая задача (3), (5) имеет единственное решение,
+    так как из формулы (4), в силу условий (5), получаем
+
     \begin{equation*}
         c_1 = - \frac{1}{\sin(t)}, \ \ \ \ \ \
         c_2 = 0,
     \end{equation*}
 
+    Краевая задача (3), (6) не имеет решений,
+    так как из формулы (4), в силу (6), следует что
+
     \begin{equation*}
         1 = -c_1 \sin(\pi) = 0
     \end{equation*}
+
+    что невозможно.
+
+    Краевая задача (3), (7) имеет бесконечное множество решений:
 
     \begin{equation*}
         x = c_1 \cos(t)
     \end{equation*}
 
-    $c_1$,
+    где $c_1$ - произвольная постоянная.
 
 \end{example*}
 
-Solving boundary problem using Green's function
+\subsection*{Метод функции Грина}
+
+Для уравнения
 
 \begin{equation}
     \ddot{x} + a(t)\dot{x} + b(t)x = f(t)
 \end{equation}
+
+рассмотрим краевую задачу с однородными граничными условиями
+%добавить замечание про неоднородные условия
 
 \begin{gather}
 \begin{split}
@@ -94,26 +131,80 @@ Solving boundary problem using Green's function
 \end{split}
 \end{gather}
 
-$x = x_1(t)$,
+\begin{remark*}
+    Любое неоднородное граничное условие можно преобразовать
+    к однородному. Пусть дана краевая задача с неоднородными
+    граничными условиями
+
+    \begin{align*}
+    & \alpha_0 \dot{x}(t_0) + \alpha_1 x(t_0) = \alpha_2
+        \ \ \ \ (\alpha^2_0 + \alpha^2_1 > 0) \\
+    & \beta_0 \dot{x}(t_1) + \beta_1 x(t_1) = \beta_2
+    \ \ \ \ (\beta^2_0 + \beta^2_1 > 0)
+    \end{align*}
+
+    Пусть $\omega(t)$ произвольная непрерывная функция
+    удовлетворяющая неоднородным граничным условиям.
+    Сделаем замену $x(t) = y(t) + \omega(t)$.
+    Получим
+
+    \begin{equation*}
+        \ddot{y} + a(t)\dot{y} + b(t)y =
+        f(t) - \ddot{\omega}(t) - a(t)\dot{\omega}(t) -
+        b(t)\omega(t) = f_1(t)
+    \end{equation*}
+
+    \begin{gather*}
+        \begin{aligned}
+            & \alpha_0 \dot{y}(t_0) + \alpha_1 y(t_0) +
+            \alpha_0 \dot{\omega}(t_0) + \alpha_1 \omega(t_0)
+            = \alpha_2 \\
+            & \beta_0 \dot{y}(t_1) + \beta_1 y(t_1) +
+            \beta_0 \dot{\omega}(t_1) + \beta_1 \omega(t_1)
+            = \beta_2
+        \end{aligned}
+        \iff
+        \begin{aligned}
+            & \alpha_0 \dot{y}(t_0) + \alpha_1 y(t_0) = 0 \\
+            & \beta_0 \dot{y}(t_1) + \beta_1 y(t_1) = 0
+        \end{aligned}
+    \end{gather*}
+
+    Поэтому далее будем предпологать что замена сделана.
+
+\end{remark*}
+
+\mbox{} \\
+
+Будем предпологать, что рассматриваемая краевая задача
+имеет единственное решение.
+
+Пусть $x = x_1(t)$ - какое-либо нетривиальное решение
+однородного уравнения
 
 \begin{equation}
     \ddot{x} + a(t) \dot{x} + b(t)x = 0
 \end{equation}
 
+удовлетворяющее первому из граничных условий (9),
+
 \begin{equation*}
     \alpha_0 \dot{x_1}(t_0) + \alpha_1 x_1(t_0) = 0
 \end{equation*}
 
-$x = x_2(t)$
+а $x = x_2(t)$ - нетривиальное решение уравнения (10),
+удовлетворяющее второму граничному условию
 
 \begin{equation*}
     \beta_0 \dot{x_2}(t_1) + \beta_1 x_2(t_1) = 0
 \end{equation*}
 
-$x_1(t)$,
-$c$,
-$x = cx_1(t)$,
-$x_2(t)$
+Тогда $x_1(t)$ не удовлетворяет второму граничному условию,
+так как в противном случае при любой постоянной $c$
+функции $x = c x_1(t)$ были бы решениями краевой задачи (10),
+(9), и наша исходная краевая задача (8), (9) имела бы
+бесконечное множетво решений. Точно так же доказывается, что
+$x_2(t)$ не удовлетворяет первому граничному условию. Итак,
 
 \begin{gather}
     \begin{split}
@@ -122,21 +213,28 @@ $x_2(t)$
     \end{split}
 \end{gather}
 
-$x = x_1(t)$,
-$x = x_2(t)$,
-$x(t)$,
+Постороенные решения $x = x_1(t)$, $x = x_2(t)$ линейно
+независимы, так как в противном случае они были бы
+пропорциональны и потому удовлетворяли бы одним и тем же
+граничным условиям, что невозможно.
+
+Решение неоднородного уравнения (8) будем искать
+методом вариации постоянных. Записывая решение $x(t)$
+в виде
 
 \begin{equation}
     x(t) = c_1(t) x_1(t) + c_2(t) x_2(t)
 \end{equation}
 
-$\dot{c}_1(t)$,
-$\dot{c}_2(t)$,
+для определения функций $\dot{c}_1(t)$ и $\dot{c}_2(t)$
+получим следующую систему линейных уравнений:
 
 \begin{align*}
     & \dot{c}_1(t) x_1(t) + \dot{c}_2(t) x_2(t) = 0 \\
     & \dot{c}_1(t) \dot{x}_1(t) + \dot{c}_2(t) \dot{x}_2(t) = f(t)
 \end{align*}
+
+Решение этой систмы уравнений имеет вид
 
 \begin{gather}
     \begin{split}
@@ -145,7 +243,7 @@ $\dot{c}_2(t)$,
     \end{split}
 \end{gather}
 
-where
+где
 
 \begin{equation*}
     w(t) =
@@ -156,8 +254,9 @@ where
     \ne 0
 \end{equation*}
 
-$x_1(t)$,
-$x_2(t)$,
+- определитель Вронского, составленный для линейно
+независиых решений $x_1(t)$ и $x_2(t)$. Интегрируя
+соотношения (13), получим
 
 \begin{align*}
     & c_1(t) = - \int^t_{t_1} \frac{x_2(s)f(s)}{w(s)} ds + \gamma_1
@@ -165,8 +264,9 @@ $x_2(t)$,
     & c_2(t) = \int^t_{t_0} \frac{x_1(s)f(s)}{w(s)} ds + \gamma_2
 \end{align*}
 
-where $\gamma_1$, $\gamma_2$,
-$c_1(t)$, $c_2(t)$
+где $\gamma_1$ и $\gamma_2$ - постоянные.
+Подставляя найденные выражения для $c_1(t)$ и $c_2(t)$ в (12),
+получим общее решение уравнения (8)
 
 \begin{equation}
     x(t) =
@@ -176,7 +276,7 @@ $c_1(t)$, $c_2(t)$
     + \gamma_2 x_2(t)
 \end{equation}
 
-$t$,
+Дифференцируя (14) по $t$, имеем
 
 \begin{equation}
     \dot{x}(t) =
@@ -186,7 +286,10 @@ $t$,
     + \gamma_2 \dot{x}_2(t)
 \end{equation}
 
-($\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0) = 0$)
+Потребуем теперь, чтобы решение (14) удовлетворяло
+граничным условиям (9). Подставляя выражения (14), (15)
+в первое из граничных условий (9) получим
+(так как $\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0) = 0$)
 
 \begin{align*}
     & 0 =
@@ -198,8 +301,10 @@ $t$,
     \gamma_2(\alpha_0 \dot{x}_2(t_0) + \alpha_1 x_2(t_0))
 \end{align*}
 
-$\gamma_2 = 0$,
-$\gamma_1 = 0$,
+В силу  неравенств (11) это возможно только при $\gamma_2 = 0$.
+Подобным же образом доказывается, что $\gamma_1 = 0$.
+Итак, решение краевой задачи (8), (9) можно
+представить в виде
 
 \begin{equation*}
     x(t) =
@@ -207,11 +312,13 @@ $\gamma_1 = 0$,
     x_2(t)\int^t_{t_0} \frac{x_1(s)f(s)}{w(s)} ds
 \end{equation*}
 
-or
+или
 
 \begin{equation}
     x(t) = \int^{t_1}_{t_0} G(t, s) f(s) ds
 \end{equation}
+
+где
 
 \begin{equation}
     G(t,s) =
@@ -223,21 +330,29 @@ or
     \end{cases}
 \end{equation}
 
-$G(t,s)$,
-$f(t)$,
-$x_1(t)$,
-$x_2(t)$,
-$G(t,s)$,
+Построенная функция $G(t,s)$ называется функцией Грина
+краевой задачи (8), (9). Таким образом, если функция
+Грина найдена, то решение краевой задачи (8), (9) задается
+формулой (16). Сама функция Грина от $f(t)$ не зависит
+(она определяется решениями $x_1(t)$ и $x_2(t)$ однородного
+уравнения (10)).
+Легко проверить, что функция Грина $G(t,s)$ при любом
+фиксированном $s$ обладает следующими свойствами:
 
 \begin{enumerate}
-    \item $t \ne s$ $G(t,s)$;
-    \item $t = t_0$ $t = t_1$ $G(t,s)$;
-    \item $t = s$ $G(t,s)$;
-    \item $t = s$ $G'_t(t,s)$ :
+    \item при $t \ne s$ \ $G(t,s)$ удовлетворяет однородному
+        уравнению (10);
+    \item при $t = t_0$ и $t = t_1$ \ $G(t,s)$ удовлетворяет
+        соответственно первому и второму граничным условиям (9);
+    \item при $t = s$ \ $G(t,s)$ непрерывна;
+    \item $t = s$ производная $G'_t(t,s)$ имеет скачок, равный 1:
         \begin{equation*}
             G'_t \vert_{t = s + 0} - G'_t \vert_{t = s - 0} = 1
         \end{equation*}
 \end{enumerate}
+
+Свойства 1. - 3. проверяются совсем просто. Докажем свойство 4.
+В силу (17)
 
 \begin{equation*}
     G'_t =
@@ -247,13 +362,49 @@ $G(t,s)$,
     \end{cases}
 \end{equation*}
 
+откуда следует, что
+
 \begin{equation*}
     G'_t \vert_{t = s + 0} - G'_t \vert_{t = s - 0} =
     \frac{x_1(s) \dot{x}_2(s) - \dot{x}_1(s) x_2(s)}{w(s)} = 1.
 \end{equation*}
 
-$G(t,s)$,
-$f(t)$,
+\begin{example*}
+
+    Построим функцию Грина для краевой задачи
+
+    \begin{equation*}
+        \ddot{x} - \dot{x} = f(t), \ \ \ x(0) = 0,
+        \ \ \ \dot{x}(1) = 0,
+    \end{equation*}
+
+    Общее решение однородного уравнения
+    $\ddot{x} - \dot{x} = 0$ имеет вид $x = c_1 + c_2 e^t$,
+    откуда находим $x_1(t) = 1 - e^t$ (нетривиальное решение,
+    удовлетворяющее первому граничному условию), $x_2(t) = 1$,
+    (нетривиальное решение, удовлетворяющее второму граничному
+    условию),
+
+    \begin{equation*}
+        w(t) =
+        \begin{vmatrix}
+            1 - e^t & 1 \\
+            -e^t & 0
+        \end{vmatrix} = e^t
+    \end{equation*}
+
+    В силу формулы (17)
+
+    \begin{equation*}
+        G(t,s) =
+        \begin{cases}
+            (1 - e^t)e^{-s}, &0 \le t \le s, \\
+            e^{-s} - 1, &s \le t \le 1,
+        \end{cases}
+    \end{equation*}
+
+
+\end{example*}
 
 
 \end{document}
