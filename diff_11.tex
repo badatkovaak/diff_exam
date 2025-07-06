@@ -1,16 +1,259 @@
 \documentclass{article}
 \usepackage[T2A, T1]{fontenc}
-% \usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage[english, russian]{babel}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\theoremstyle{plain} \newtheorem*{theorem*}{Теорема}
+\theoremstyle{plain} \newtheorem{theorem}{Теорема}[section]
+% \theoremstyle{remark} \newtheorem{definition}{Definition}[section]
+% \theoremstyle{remark} \newtheorem{notation}{Notation}[section]
+\theoremstyle{definition} \newtheorem*{corollary*}{Следствие}
+\theoremstyle{definition} \newtheorem{corollary}{Следствие}[section]
+\theoremstyle{remark} \newtheorem*{example*}{Пример}
+
 
 \begin{document}
 
-Hello Hi There
+\abovedisplayskip=0pt
+\belowdisplayskip=9pt
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=12pt
+
 
 \begin{equation}
-x^2 + 5
+    \ddot{x} + a(t)\dot{x} + b(t)x = f(t)
 \end{equation}
 
-Pretty good, huh.
+$a(t)$, $b(t)$, $f(t)$, $t_0 \le t \le t_1$
+$x(t)$
+
+\begin{gather}
+    \begin{split}
+        \dot{x}(t_0) - \alpha_0 x(t_0) = \alpha_1, \\
+        \dot{x}(t_1) - \beta_0 x(t_1) = \beta_1,
+    \end{split}
+\end{gather}
+
+$\alpha_0, \alpha_1, \beta_0, \beta_1$,
+$x(t)$, $\dot{x}(t)$, $t = t_0$, $t = t_1$,
+
+\begin{example*}
+    This is example
+
+    \begin{equation}
+        \ddot{x} + x = 0
+    \end{equation}
+
+    \begin{equation}
+        x = c_1 \cos(t) + c_2 \sin(t)
+    \end{equation}
+
+    \begin{align}
+        &\dot{x}(0) = 0, &\dot{x}(1) = 1; \\
+        &\dot{x}(0) = 0, &\dot{x}(\pi) = 1; \\
+        &\dot{x}(0) = 0, &\dot{x}(\pi) = 0;
+    \end{align}
+
+    \begin{equation*}
+        c_1 = - \frac{1}{\sin(t)}, \ \ \ \ \ \
+        c_2 = 0,
+    \end{equation*}
+
+    \begin{equation*}
+        1 = -c_1 \sin(\pi) = 0
+    \end{equation*}
+
+    \begin{equation*}
+        x = c_1 \cos(t)
+    \end{equation*}
+
+    $c_1$,
+
+\end{example*}
+
+Solving boundary problem using Green's function
+
+\begin{equation}
+    \ddot{x} + a(t)\dot{x} + b(t)x = f(t)
+\end{equation}
+
+\begin{gather}
+\begin{split}
+    & \alpha_0 \dot{x}(t_0) + \alpha_1 x(t_0) = 0
+    \ \ \ \ (\alpha^2_0 + \alpha^2_1 > 0) \\
+    & \beta_0 \dot{x}(t_1) + \beta_1 x(t_1) = 0
+    \ \ \ \ (\beta^2_0 + \beta^2_1 > 0)
+\end{split}
+\end{gather}
+
+$x = x_1(t)$,
+
+\begin{equation}
+    \ddot{x} + a(t) \dot{x} + b(t)x = 0
+\end{equation}
+
+\begin{equation*}
+    \alpha_0 \dot{x_1}(t_0) + \alpha_1 x_1(t_0) = 0
+\end{equation*}
+
+$x = x_2(t)$
+
+\begin{equation*}
+    \beta_0 \dot{x_2}(t_1) + \beta_1 x_2(t_1) = 0
+\end{equation*}
+
+$x_1(t)$,
+$c$,
+$x = cx_1(t)$,
+$x_2(t)$
+
+\begin{gather}
+    \begin{split}
+    \beta_0 \dot{x_1}(t_1) + \beta_1 x_1(t_1) \ne 0 \\
+    \alpha_0 \dot{x_2}(t_0) + \alpha_1 x_2(t_0) \ne 0
+    \end{split}
+\end{gather}
+
+$x = x_1(t)$,
+$x = x_2(t)$,
+$x(t)$,
+
+\begin{equation}
+    x(t) = c_1(t) x_1(t) + c_2(t) x_2(t)
+\end{equation}
+
+$\dot{c}_1(t)$,
+$\dot{c}_2(t)$,
+
+\begin{align*}
+    & \dot{c}_1(t) x_1(t) + \dot{c}_2(t) x_2(t) = 0 \\
+    & \dot{c}_1(t) \dot{x}_1(t) + \dot{c}_2(t) \dot{x}_2(t) = f(t)
+\end{align*}
+
+\begin{gather}
+    \begin{split}
+        & \dot{c}_1(t) = - \frac{x_2(t)f(t)}{w(t)}, \\
+        & \dot{c}_2(t) = \frac{x_1(t)f(t)}{w(t)},
+    \end{split}
+\end{gather}
+
+where
+
+\begin{equation*}
+    w(t) =
+    \begin{vmatrix}
+        x_1(t) & x_2(t) \\
+        \dot{x}_1(t) & \dot{x}_2(t)
+    \end{vmatrix}
+    \ne 0
+\end{equation*}
+
+$x_1(t)$,
+$x_2(t)$,
+
+\begin{align*}
+    & c_1(t) = - \int^t_{t_1} \frac{x_2(s)f(s)}{w(s)} ds + \gamma_1
+    = \int^{t_1}_t \frac{x_2(s)f(s)}{w(s)} ds + \gamma_1, \\
+    & c_2(t) = \int^t_{t_0} \frac{x_1(s)f(s)}{w(s)} ds + \gamma_2
+\end{align*}
+
+where $\gamma_1$, $\gamma_2$,
+$c_1(t)$, $c_2(t)$
+
+\begin{equation}
+    x(t) =
+    x_1(t)\int^{t_1}_t \frac{x_2(s)f(s)}{w(s)} ds +
+    x_2(t)\int^t_{t_0} \frac{x_1(s)f(s)}{w(s)} ds
+    + \gamma_1 x_1(t)
+    + \gamma_2 x_2(t)
+\end{equation}
+
+$t$,
+
+\begin{equation}
+    \dot{x}(t) =
+    \dot{x}_1(t)\int^{t_1}_t \frac{x_2(s)f(s)}{w(s)} ds +
+    \dot{x}_2(t)\int^t_{t_0} \frac{x_1(s)f(s)}{w(s)} ds
+    + \gamma_1 \dot{x}_1(t)
+    + \gamma_2 \dot{x}_2(t)
+\end{equation}
+
+($\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0) = 0$)
+
+\begin{align*}
+    & 0 =
+    (\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0))
+    \int^{t_1}_t \frac{x_2(s)f(s)}{w(s)} ds +
+    \gamma_1
+    (\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0)) + \\
+    & + \gamma_2(\alpha_0 \dot{x}_2(t_0) + \alpha_1 x_2(t_0)) =
+    \gamma_2(\alpha_0 \dot{x}_2(t_0) + \alpha_1 x_2(t_0))
+\end{align*}
+
+$\gamma_2 = 0$,
+$\gamma_1 = 0$,
+
+\begin{equation*}
+    x(t) =
+    x_1(t)\int^{t_1}_t \frac{x_2(s)f(s)}{w(s)} ds +
+    x_2(t)\int^t_{t_0} \frac{x_1(s)f(s)}{w(s)} ds
+\end{equation*}
+
+or
+
+\begin{equation}
+    x(t) = \int^{t_1}_{t_0} G(t, s) f(s) ds
+\end{equation}
+
+\begin{equation}
+    G(t,s) =
+    \begin{cases}
+        \frac{x_1(s) x_2(t)}{w(s)} , &t_0 \le s \le t,\\
+        \frac{x_1(t) x_2(s)}{w(s)} , &t \le s \le t_1,\\
+        \frac{x_1(s) x_2(t)}{w(s)} , &t_0 \le t \le s,\\
+        \frac{x_1(t) x_2(s)}{w(s)} , &s \le t \le t_1,\\
+    \end{cases}
+\end{equation}
+
+$G(t,s)$,
+$f(t)$,
+$x_1(t)$,
+$x_2(t)$,
+$G(t,s)$,
+
+\begin{enumerate}
+    \item $t \ne s$ $G(t,s)$;
+    \item $t = t_0$ $t = t_1$ $G(t,s)$;
+    \item $t = s$ $G(t,s)$;
+    \item $t = s$ $G'_t(t,s)$ :
+        \begin{equation*}
+            G'_t \vert_{t = s + 0} - G'_t \vert_{t = s - 0} = 1
+        \end{equation*}
+\end{enumerate}
+
+\begin{equation*}
+    G'_t =
+    \begin{cases}
+        \frac{\dot{x}_1(t) x_2(s)}{w(s)}, &t_0 \le t \le s, \\
+        \frac{x_1(s) \dot{x}_2(t)}{w(s)}, &s \le t \le t_1,
+    \end{cases}
+\end{equation*}
+
+\begin{equation*}
+    G'_t \vert_{t = s + 0} - G'_t \vert_{t = s - 0} =
+    \frac{x_1(s) \dot{x}_2(s) - \dot{x}_1(s) x_2(s)}{w(s)} = 1.
+\end{equation*}
+
+$G(t,s)$,
+$f(t)$,
+
 
 \end{document}
