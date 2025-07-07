@@ -9,7 +9,7 @@
 \usepackage[english, russian]{babel}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{5pt}
 
 \theoremstyle{definition} \newtheorem*{theorem*}{Теорема}
 \theoremstyle{plain} \newtheorem{theorem}{Теорема}[section]
@@ -25,6 +25,9 @@
 \belowdisplayskip=9pt
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=12pt
+
+\section*{Три вида Траекторий}
+Ризаев Даниил 05-305
 
 \subsection*{Динамические системы}
 
@@ -51,7 +54,7 @@ $x^1, \dots, x^n$ и удовлетворяет условию Липшица в
     \bar{x} = \bar{\varphi}(t)
 \end{equation*}
 
-Системы уравнений (1), удовлетворяющее условию
+системы уравнений (1), удовлетворяющее условию
 
 \begin{equation*}
     \bar{\varphi}(t_0) = \bar{x}_0
@@ -80,7 +83,7 @@ $t$ будем называть \textit{траекторией}.
 
 \begin{equation*}
     \frac{d}{dt} \bar{\varphi}(t + c)
-    = \bar{\varphi}(t + c)
+    = \dot{\bar{\varphi}}(t + c)
     = \bar{f}(\bar{\varphi}(t + c))
 \end{equation*}
 
@@ -121,7 +124,7 @@ $\bar{x} = \bar{\psi}(t)$ имеют общую точку,
 3. Решения динамической системы обладают групповым свойством:
 если $\bar{x} = \bar{\varphi}(t, \bar{x}_0)$ - решение
 системы (1), удовлетворяющее начальному условию
-$\bar{\varphi}(0, x_0) =\bar{x}_0$, то
+$\bar{\varphi}(0, \bar{x}_0) =\bar{x}_0$, то
 
 \begin{equation*}
     \bar{\varphi}(t, \bar{\varphi}(s, \bar{x}_0))
@@ -147,12 +150,13 @@ $\bar{\varphi}_2 = \bar{\varphi}(t + s, \bar{x}_0)$
 Таким образом, решения $\bar{\varphi}_1(t)$ и
 $\bar{\varphi}_2(t)$ системы уравнений (1) удовлетворяют
 одинаковым начальным условиям. В силу теоремы единственности
-$\bar{\varphi}(t) = \bar{\varphi}_2(t)$ или
+$\bar{\varphi}(t) = \bar{\varphi}_2(t)$
+    % или
 
-\begin{equation*}
-    \bar{\varphi}(t, \bar{\varphi}(s, \bar{x}_0))
-    = \bar{\varphi}(t + s, \bar{x}_0)
-\end{equation*}
+% \begin{equation*}
+%     \bar{\varphi}(t, \bar{\varphi}(s, \bar{x}_0))
+%     = \bar{\varphi}(t + s, \bar{x}_0)
+% \end{equation*}
 
 \end{proof}
 
@@ -270,7 +274,7 @@ $F$ - замкнутое множество.
     получим продолжение
     решения $\bar{x} = \bar{\varphi}(t)$, определенное
     на интервале $(- \infty, b)$.
-\newline
+
     С помощью равенства $\bar{\varphi}(t)
     = \bar{\varphi}(t - c)$, которое
     получается из (2) заменой $t$ на $t - c$, получим продолжение
@@ -313,12 +317,13 @@ $F$ - замкнутое множество.
 
     Числа $\left[ \frac{t}{c_n} \right] c_n$,
     будучи целыми кратными периодов $c_n$,
-    сами являются периодами решения $\bar{\varphi}(t)$. Поэтому
+    сами являются периодами решения $\bar{\varphi}(t)$.
+    Поэтому
 
     \begin{equation*}
         \bar{\varphi}(t)
         = \bar{\varphi}
-        \left( t - \left[\frac{t}{c_n} c_n \right]\right)
+        \left( t - \left[\frac{t}{c_n} \right] c_n \right)
     \end{equation*}
 
     переходя в равенстве (3) к пределу при
@@ -336,7 +341,6 @@ $F$ - замкнутое множество.
 
     Таким образом, решение $\bar{x} = \bar{\varphi}(t)$
     в случае а) является положением равновесия.
-\\
 
     В случае б)
 

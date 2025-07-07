@@ -9,7 +9,7 @@
 \usepackage[english, russian]{babel}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{5pt}
 
 \theoremstyle{plain} \newtheorem*{theorem*}{Теорема}
 \theoremstyle{plain} \newtheorem{theorem}{Теорема}[section]
@@ -17,16 +17,19 @@
 % \theoremstyle{remark} \newtheorem{notation}{Notation}[section]
 \theoremstyle{defintition} \newtheorem*{corollary*}{Следствие}
 % \theoremstyle{definition} \newtheorem{corollary}{Следствие}[section]
-\theoremstyle{remark} \newtheorem*{example*}{Пример}
-\theoremstyle{remark} \newtheorem*{remark*}{Замечание}
+\theoremstyle{plain} \newtheorem*{example*}{Пример}
+\theoremstyle{plain} \newtheorem*{remark*}{Замечание}
 
 
 \begin{document}
 
 \abovedisplayskip=0pt
-\belowdisplayskip=9pt
+\belowdisplayskip=10pt
 \abovedisplayshortskip=0pt
-\belowdisplayshortskip=12pt
+\belowdisplayshortskip=10pt
+
+\section*{Краевые задачи для линейных дифференциальных уравнений второго порядка. Функция Грина.}
+Ризаев Даниил 05-305
 
 \subsection*{Краевая задача}
 
@@ -120,7 +123,6 @@ $x(t)$ и $\dot{x}(t)$ ни при $t = t_0$, ни при $t = t_1$.
 \end{equation}
 
 рассмотрим краевую задачу с однородными граничными условиями
-%добавить замечание про неоднородные условия
 
 \begin{gather}
 \begin{split}
@@ -143,10 +145,12 @@ $x(t)$ и $\dot{x}(t)$ ни при $t = t_0$, ни при $t = t_1$.
     \ \ \ \ (\beta^2_0 + \beta^2_1 > 0)
     \end{align*}
 
-    Пусть $\omega(t)$ произвольная непрерывная функция
-    удовлетворяющая неоднородным граничным условиям.
-    Сделаем замену $x(t) = y(t) + \omega(t)$.
-    Получим
+    Пусть $\omega(t)$ произвольная, определенная на
+    $t_0 \le t \le t_1$, дважды непрерывно дифференцируемая
+    функция, удовлетворяющая неоднородным граничным условиям.
+    Сделаем замену $x(t) = y(t) + \omega(t)$. Получим
+    новую систему того же вида, и однородные граничные
+    условия для $y(t)$
 
     \begin{equation*}
         \ddot{y} + a(t)\dot{y} + b(t)y =
@@ -173,9 +177,7 @@ $x(t)$ и $\dot{x}(t)$ ни при $t = t_0$, ни при $t = t_1$.
     Поэтому далее будем предпологать что замена сделана.
 
 \end{remark*}
-
 \mbox{} \\
-
 Будем предпологать, что рассматриваемая краевая задача
 имеет единственное решение.
 
@@ -259,7 +261,8 @@ $x_2(t)$ не удовлетворяет первому граничному у�
 соотношения (13), получим
 
 \begin{align*}
-    & c_1(t) = - \int^t_{t_1} \frac{x_2(s)f(s)}{w(s)} ds + \gamma_1
+    & c_1(t)
+    = - \int^t_{t_1} \frac{x_2(s)f(s)}{w(s)} ds + \gamma_1
     = \int^{t_1}_t \frac{x_2(s)f(s)}{w(s)} ds + \gamma_1, \\
     & c_2(t) = \int^t_{t_0} \frac{x_1(s)f(s)}{w(s)} ds + \gamma_2
 \end{align*}
@@ -292,13 +295,12 @@ $x_2(t)$ не удовлетворяет первому граничному у�
 (так как $\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0) = 0$)
 
 \begin{align*}
-    & 0 =
-    (\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0))
-    \int^{t_1}_t \frac{x_2(s)f(s)}{w(s)} ds +
+    & 0 = (\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0))
+    \int^{t_1}_{t_0} \frac{x_2(s)f(s)}{w(s)} ds +
     \gamma_1
     (\alpha_0 \dot{x}_1(t_0) + \alpha_1 x_1(t_0)) + \\
-    & + \gamma_2(\alpha_0 \dot{x}_2(t_0) + \alpha_1 x_2(t_0)) =
-    \gamma_2(\alpha_0 \dot{x}_2(t_0) + \alpha_1 x_2(t_0))
+    & + \gamma_2(\alpha_0 \dot{x}_2(t_0) + \alpha_1 x_2(t_0))
+    = \gamma_2(\alpha_0 \dot{x}_2(t_0) + \alpha_1 x_2(t_0))
 \end{align*}
 
 В силу  неравенств (11) это возможно только при $\gamma_2 = 0$.
@@ -325,8 +327,8 @@ $x_2(t)$ не удовлетворяет первому граничному у�
     \begin{cases}
         \frac{x_1(s) x_2(t)}{w(s)} , &t_0 \le s \le t,\\
         \frac{x_1(t) x_2(s)}{w(s)} , &t \le s \le t_1,\\
-        \frac{x_1(s) x_2(t)}{w(s)} , &t_0 \le t \le s,\\
-        \frac{x_1(t) x_2(s)}{w(s)} , &s \le t \le t_1,\\
+        \frac{x_1(t) x_2(s)}{w(s)} , &t_0 \le t \le s,\\
+        \frac{x_1(s) x_2(t)}{w(s)} , &s \le t \le t_1,\\
     \end{cases}
 \end{equation}
 
@@ -365,8 +367,9 @@ $x_2(t)$ не удовлетворяет первому граничному у�
 откуда следует, что
 
 \begin{equation*}
-    G'_t \vert_{t = s + 0} - G'_t \vert_{t = s - 0} =
-    \frac{x_1(s) \dot{x}_2(s) - \dot{x}_1(s) x_2(s)}{w(s)} = 1.
+    G'_t \vert_{t = s + 0} - G'_t \vert_{t = s - 0}
+    = \frac{x_1(s) \dot{x}_2(s) - \dot{x}_1(s) x_2(s)}{w(s)}
+    = \frac{w(s)}{w(s)} = 1
 \end{equation*}
 
 \begin{example*}
